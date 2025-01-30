@@ -86,23 +86,36 @@ export const EventTable = () => {
   };
 
   const nextEvent = getNextEvent();
-
   return (
-    <Table>
-      <TableCaption>Upcoming Wilderness Events</TableCaption>
-      <TableBody>
-        {events.map((event) => (
-          <TableRow key={event.id} className={event.name === nextEvent ? "bg-yellow-200" : ""}>
-            <TableCell>{event.name}</TableCell>
-            <TableCell>{getEventTime(event.name, false)}</TableCell>
+    <div style={{ position: "relative" }}>
+      <Table>
+        <TableCaption>Upcoming Wilderness Events</TableCaption>
+        <TableBody>
+          {events.map((event) => (
+            <TableRow
+              key={event.id}
+              className={event.name === nextEvent ? "bg-yellow-200" : ""}
+            >
+              <TableCell>
+                <a
+                    href={`https://runescape.wiki/w/Wilderness_Flash_Events#${event.name.replaceAll(" ","_")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={event.isSpecial ? { textDecoration: 'underline', fontStyle: 'italic' } : {}}
+                >
+                    {event.name}
+                </a>
+                </TableCell>
+              <TableCell>{getEventTime(event.name, false)}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+        <TableFooter>
+          <TableRow>
+            <TableCell colSpan={2} className="text-center">Next Event: {nextEvent} in {countdown} Minutes</TableCell>
           </TableRow>
-        ))}
-      </TableBody>
-      <TableFooter>
-        <TableRow>
-          <TableCell colSpan={2}className="text-center">Next Event: {nextEvent} in {countdown} Minutes</TableCell>
-        </TableRow>
-      </TableFooter>
-    </Table>
+        </TableFooter>
+      </Table>
+    </div>
   );
 };
