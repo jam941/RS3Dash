@@ -3,6 +3,8 @@ import { EventTable } from "./WildyEvents/EventTable";
 
 export default function Home() {
   return (
-    <EventTable />
+    <div style={{ width: '300px', overflowX: 'auto' }}>
+      <EventTable />
+    </div>
   );
 }

@@ -89,7 +89,7 @@ export const EventTable = () => {
 
   return (
     <Table>
-      <TableCaption>Upcoming Wilderness Events - Next update in {countdown}</TableCaption>
+      <TableCaption>Upcoming Wilderness Events</TableCaption>
       <TableBody>
         {events.map((event) => (
           <TableRow key={event.id} className={event.name === nextEvent ? "bg-yellow-200" : ""}>
